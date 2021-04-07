@@ -49,17 +49,17 @@ bool machine::modifier(int id)
 
 }
 
-QSqlQueryModel * machine::tri()
+QSqlQueryModel * machine::tri(QString selon)
 {
     QSqlQueryModel * model=new QSqlQueryModel();
-    model->setQuery("select * from machine order by nom");
+    model->setQuery("select * from machine order by "+selon+"");
     return model;
 }
-QSqlQueryModel * machine::afficherRech(int id)
+QSqlQueryModel * machine::afficherRech(QString selon,QString rech)
 {
     QSqlQueryModel * model=new QSqlQueryModel();
     QString id_str=QString::number(id);
-    model->setQuery("select * from machine where id like '"+id_str+"%'");
+    model->setQuery("select * from machine where "+selon+" like '"+rech+"%'");
     return model;
 }
 

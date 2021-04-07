@@ -36,9 +36,16 @@ private slots:
 
     void on_pushButton_10_clicked();
 
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_12_clicked();
+
+    void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
+
 private:
     Ui::MainWindow *ui;
     machine tmpm;
     tache tmpt;
+    int id;
 };
 #endif // MAINWINDOW_H

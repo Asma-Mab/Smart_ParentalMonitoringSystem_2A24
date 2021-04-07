@@ -12,8 +12,8 @@ public:
     bool ajouter();
     bool supprimer(int);
     QSqlQueryModel * afficher();
-    QSqlQueryModel * tri();
-     QSqlQueryModel * afficherRech(int);
+    QSqlQueryModel * tri(QString);
+     QSqlQueryModel * afficherRech(QString,QString);
     bool modifier(int);
 private:
     int id;
