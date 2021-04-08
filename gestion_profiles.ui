@@ -753,15 +753,31 @@ background:white;
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>50</x>
       <y>50</y>
-      <width>711</width>
-      <height>31</height>
+      <width>701</width>
+      <height>461</height>
      </rect>
     </property>
     <property name="title">
      <string>Gestion des PROFILES</string>
     </property>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>420</y>
+       <width>81</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:white;</string>
+     </property>
+     <property name="text">
+      <string>Quitter</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
@@ -1466,22 +1482,6 @@ background:white;
       </property>
      </widget>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>470</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background:white;</string>
-    </property>
-    <property name="text">
-     <string>Quitter</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
