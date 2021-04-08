@@ -723,7 +723,7 @@ background:white;
      <rect>
       <x>610</x>
       <y>470</y>
-      <width>75</width>
+      <width>91</width>
       <height>23</height>
      </rect>
     </property>
@@ -755,8 +755,8 @@ background:white;
      <rect>
       <x>50</x>
       <y>50</y>
-      <width>711</width>
-      <height>31</height>
+      <width>701</width>
+      <height>461</height>
      </rect>
     </property>
     <property name="title">
@@ -764,9 +764,9 @@ background:white;
     </property>
    </widget>
    <zorder>label_9</zorder>
+   <zorder>groupBox</zorder>
    <zorder>tabWidget</zorder>
    <zorder>pushButton</zorder>
-   <zorder>groupBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

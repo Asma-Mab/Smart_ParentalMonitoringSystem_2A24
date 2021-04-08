@@ -5,6 +5,8 @@
 #include <QPixmap>
 #include <QLabel>
 
+
+
 Connection ::Connection()
 {
 
@@ -37,12 +39,15 @@ MainWindow::~MainWindow()
 }
 
 
+
 void MainWindow::on_pushButton_Login_clicked()
 {
     QString username = ui ->lineEdit_username->text();
     QString password = ui ->lineEdit_password->text();
 
-    if(username == "bayoudh" &&  password == "gogo0000") {
+
+    if((username == "bayoudh" && password =="0000") || (username =="nermin" && password=="0000") || (username == "nathir" && password =="0000" ))
+    {
     QMessageBox::information(this, "Login","Username and  password is correct");
     hide();
     MainWindow2 *newmain2=new MainWindow2();
