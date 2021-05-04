@@ -7,11 +7,41 @@
 #include <QtPrintSupport/QPrinter>
 #include <QTextDocument>
 #include <QPixmap>
+#include <QPieSeries>
+#include <QtCharts>
+#include <QChartView>
+#include <QSystemTrayIcon>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QIntValidator *roll = new QIntValidator(100000,999999);//controle de saisie
+       ui->lineEdit->setValidator(roll);
+       ui->lineEdit_7->setValidator(roll);
+       ui->lineEdit_14->setValidator(roll);//controle de saisie
+
+
+    QPieSeries *series = new QPieSeries();//stat
+       QSqlQuery q("select type,count(*) from machine group by type");
+
+
+        while(q.next())
+        {series->append(q.value(0).toString()+": "+q.value(1).toString(),q.value(1).toInt());}
+       QChart *chart = new QChart();
+       chart->addSeries(series);
+       chart->setTitle("Statistiques");
+       chart->setBackgroundBrush(Qt::transparent);
+       QChartView *chartview = new QChartView(chart);
+       chartview->setRenderHint(QPainter::Antialiasing);
+       chartview->setParent(ui->horizontalFrame);
+       chartview->resize(400,300);
+
+       chart->setAnimationOptions(QChart::AllAnimations);
+       chart->legend()->setVisible(true);
+       chart->legend()->setAlignment(Qt::AlignRight);
+       series->setLabelsVisible(true);//stat
+
     ui->tableView->setModel(tmpm.afficher());
     ui->tableView_2->setModel(tmpt.afficher());
     QPixmap pix("C:/Users/Kraiem Nathir/Desktop/Webp.net-resizeimage.jpg");
@@ -40,15 +70,18 @@ void MainWindow::on_pushButton_2_clicked()
     bool test=m.ajouter();
     if(test)
     { ui->tableView->setModel(tmpm.afficher());
-        QMessageBox::information(nullptr, QObject::tr("machine ajouté"),
-                    QObject::tr("successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                notifier->show();
+                                notifier->showMessage("machine ajouté","Succés",QSystemTrayIcon::Information,10000);
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("machine non ajouté"),
-                    QObject::tr("failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        ui->tableView->setModel(tmpm.afficher());
+               QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                       notifier->show();
+                                       notifier->showMessage("machine non ajouté","Echec",QSystemTrayIcon::Critical,10000);
+    }
 
 }
 
@@ -76,15 +109,19 @@ void MainWindow::on_pushButton_clicked()
     bool test=m.modifier(id);
     if(test)
     { ui->tableView->setModel(tmpm.afficher());
-        QMessageBox::information(nullptr, QObject::tr("machine modifié"),
-                    QObject::tr("successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                notifier->show();
+                                notifier->showMessage("machine modifié","Succés",QSystemTrayIcon::Information,10000);
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("machine non modifié"),
-                    QObject::tr("failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        ui->tableView->setModel(tmpm.afficher());
+               QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                       notifier->show();
+                                       notifier->showMessage("machine non modifié","Echec",QSystemTrayIcon::Critical,10000);
+    }
+
 }
 
 void MainWindow::on_pushButton_4_clicked()
@@ -126,16 +163,20 @@ void MainWindow::on_pushButton_8_clicked()
     tache t(id,type,nom,description,date,heure_d,heure_f,id_m);
     bool test=t.ajouter();
     if(test)
-    { ui->tableView_2->setModel(tmpt.afficher());
-        QMessageBox::information(nullptr, QObject::tr("tache ajouté"),
-                    QObject::tr("successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    { ui->tableView->setModel(tmpm.afficher());
+        QSystemTrayIcon* notifier = new QSystemTrayIcon(this);//notification f kol wahd amawjouda ajouter / supprimer...44
+                                notifier->show();
+                                notifier->showMessage("tache ajouté","Succés",QSystemTrayIcon::Information,10000);//notification
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("tache non ajouté"),
-                    QObject::tr("failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        ui->tableView->setModel(tmpm.afficher());
+               QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                       notifier->show();
+                                       notifier->showMessage("tache non ajouté","Echec",QSystemTrayIcon::Critical,10000);
+    }
+
 }
 
 void MainWindow::on_pushButton_7_clicked()
@@ -151,16 +192,20 @@ void MainWindow::on_pushButton_7_clicked()
     tache t(id,type,nom,description,date,heure_d,heure_f,id_m);
     bool test=t.modifier(id);
     if(test)
-    { ui->tableView_2->setModel(tmpt.afficher());
-        QMessageBox::information(nullptr, QObject::tr("tache modifié"),
-                    QObject::tr("successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {ui->tableView->setModel(tmpm.afficher());
+        QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                notifier->show();
+                                notifier->showMessage("tache madifié","Succés",QSystemTrayIcon::Information,10000);
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("tache non modifié"),
-                    QObject::tr("failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        ui->tableView->setModel(tmpm.afficher());
+               QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                       notifier->show();
+                                       notifier->showMessage("tache non modifié","Echec",QSystemTrayIcon::Critical,10000);
+    }
+
 }
 
 void MainWindow::on_pushButton_9_clicked()
@@ -169,16 +214,20 @@ void MainWindow::on_pushButton_9_clicked()
       int id=ui->tableView_2->model()->index(row,0).data().toInt();
     bool test=tmpt.supprimer(id);
     if(test)
-    { ui->tableView_2->setModel(tmpt.afficher());
-        QMessageBox::information(nullptr, QObject::tr("tache supprimé"),
-                    QObject::tr("successful.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    { ui->tableView->setModel(tmpm.afficher());
+        QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                notifier->show();
+                                notifier->showMessage("tache supprimé","Succés",QSystemTrayIcon::Information,10000);
 
 }
     else
-        QMessageBox::critical(nullptr, QObject::tr("tache non supprimé"),
-                    QObject::tr("failed.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+    {
+        ui->tableView->setModel(tmpm.afficher());
+               QSystemTrayIcon* notifier = new QSystemTrayIcon(this);
+                                       notifier->show();
+                                       notifier->showMessage("tache non supprimé","Echec",QSystemTrayIcon::Critical,10000);
+    }
+
 
 }
 
@@ -252,4 +301,42 @@ void MainWindow::on_pushButton_12_clicked()
       ui->tabWidget_3->setCurrentIndex(0);
       QString res=QString::number(id);
       ui->lineEdit_7->setText(res);
+}
+
+void MainWindow::on_pushButton_13_clicked()
+{//export Excel
+    QTableView *table;
+           table = ui->tableView;
+
+           QString filters("CSV files (*.csv);;All files (*.*)");
+           QString defaultFilter("CSV files (*.csv)");
+           QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+                              filters, &defaultFilter);
+           QFile file(fileName);
+
+           QAbstractItemModel *model =  table->model();
+           if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+               QTextStream data(&file);
+               QStringList strList;
+               for (int i = 0; i < model->columnCount(); i++) {
+                   if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+                       strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+                   else
+                       strList.append("");
+               }
+               data << strList.join(";") << "\n";
+               for (int i = 0; i < model->rowCount(); i++) {
+                   strList.clear();
+                   for (int j = 0; j < model->columnCount(); j++) {
+
+                       if (model->data(model->index(i, j)).toString().length() > 0)
+                           strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+                       else
+                           strList.append("");
+                   }
+                   data << strList.join(";") + "\n";
+               }
+               file.close();
+               QMessageBox::information(this,"Exporter To Excel","Exporter En Excel Avec Succées ");
+           }
 }
