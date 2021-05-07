@@ -31,8 +31,6 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_tabWidget_currentChanged(int index);
-
     void on_checkBox_clicked();
 
     void on_checkBox_2_clicked();
@@ -41,11 +39,7 @@ private slots:
 
     void on_checkBox_4_clicked();
 
-    void on_pushButton_rechercher_clicked();
-
     void on_pushButton_impression_client_clicked();
-
-    void on_pushButton_ajouter_re_clicked();
 
     void on_pushButton_rechercher_2_clicked();
 

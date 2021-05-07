@@ -1,6 +1,9 @@
 <RCC>
-    <qresource prefix="/resources">
-        <file>img/h.png</file>
-        <file>img/5.jpg</file>
+    <qresource prefix="/img">
+        <file>Cool-Background-For-Laptop.jpg</file>
+        <file>abc.jpg</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>bgn.jpg</file>
     </qresource>
 </RCC>

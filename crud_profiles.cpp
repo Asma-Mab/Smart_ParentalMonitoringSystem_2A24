@@ -138,4 +138,18 @@ QSqlQueryModel * crud_profiles::afficher_password(QString prenom)
 }
 
 //
+int crud_profiles::request(QString id){
+    QSqlQuery query;
+     query.prepare("select  * from profiles  WHERE ID= '"+id+"'");
+     query.exec();
+      int total=0;
+
+     while(query.next()){
+       total++;
+
+     }
+
+
+     return total;
+}
 

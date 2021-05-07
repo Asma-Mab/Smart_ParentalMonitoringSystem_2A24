@@ -138,3 +138,19 @@ QSqlQueryModel * crud_utilisateurs::afficher_age(QString prenom)
 }
 
 //
+
+int crud_utilisateurs::request(QString id){
+    QSqlQuery query;
+     query.prepare("select  * from utilisateurs  WHERE ID= '"+id+"'");
+     query.exec();
+      int total=0;
+
+     while(query.next()){
+       total++;
+
+     }
+
+
+     return total;
+}
+

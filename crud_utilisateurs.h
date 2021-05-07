@@ -33,6 +33,8 @@ public:
     QSqlQueryModel *afficher_id(QString);
     QSqlQueryModel *afficher_prenom(QString);
     QSqlQueryModel *afficher_age(QString);
+    int request(QString id);
+
 };
 
 #endif // CRUD_UTILISATEURS_H

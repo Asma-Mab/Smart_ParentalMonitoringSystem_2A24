@@ -31,6 +31,8 @@ public:
     QSqlQueryModel *afficher_id(QString);
     QSqlQueryModel *afficher_type(QString);
     QSqlQueryModel *afficher_password(QString);
+    int request(QString id);
+
 
 };
 

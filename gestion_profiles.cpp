@@ -41,26 +41,35 @@ void gestion_profiles::on_pushButton_clicked()
 
 void gestion_profiles::on_pushButton_ajoute_2_clicked()
 {
-    int i=ui->lineEdit_id_2->text().toInt();
-    QString p=ui->lineEdit_prenom_2->text();
-    QString n=ui->lineEdit_nom_2->text();
-    QString a=ui->lineEdit_age_2->text();
-        crud_profiles c(i,p,n,a);
-        bool test = c.ajouter();
-        if (test)
-        {
-            player->setMedia(QUrl::fromLocalFile("C:/Users/Bayoudh Mohamed/Desktop/icons/profile ajouter.mp3"));
-                        player->play();
-                        qDebug()<<player->errorString();
-                        QThread::sleep(1);
-            ui->tableView->setModel(tempprofiles.afficher());
+    int nb = tempprofiles.request(ui->lineEdit_id_2->text());
+    if(nb==0)
+    {
+        int i=ui->lineEdit_id_2->text().toInt();
+        QString p=ui->lineEdit_prenom_2->text();
+        QString n=ui->lineEdit_nom_2->text();
+        QString a=ui->lineEdit_age_2->text();
+            crud_profiles c(i,p,n,a);
+            bool test = c.ajouter();
+            if (test)
+            {
+                player->setMedia(QUrl::fromLocalFile("C:/Users/Bayoudh Mohamed/Desktop/icons/profile ajouter.mp3"));
+                            player->play();
+                            qDebug()<<player->errorString();
+                            QThread::sleep(1);
+                ui->tableView->setModel(tempprofiles.afficher());
 
-            QMessageBox::information(nullptr,"AJOUT profiles","profile AJOUTEE");
-        }
-        else
-        {
-            QMessageBox::warning(nullptr,"AJOUT profiles","profile NON AJOUTEE");
-        }
+                QMessageBox::information(nullptr,"AJOUT profiles","profile AJOUTEE");
+            }
+            else
+            {
+                QMessageBox::warning(nullptr,"AJOUT profiles","profile NON AJOUTEE");
+            }
+
+    }
+    else
+    {
+        QMessageBox::warning(nullptr,"profiles","profile EXISTE");
+    }
 
 
 }
