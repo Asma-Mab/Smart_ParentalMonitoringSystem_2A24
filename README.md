@@ -8,4 +8,5 @@ Parents can easily monitor their children's online activities, ensuring their di
 With SmartParental+, parents can gain peace of mind, knowing they have a comprehensive solution that includes monitoring, access control, motion detection, gas detection, and scheduled activity management. Embrace the power of SmartParental+ to protect your children and secure your home. 
 
 #SmartParental+ #ParentalMonitoring #HomeSecurity #ScheduledActivities #DigitalSafety
+                                                                                                                                                  
                                                                                                                                                   By Mohamed Bayoudh
