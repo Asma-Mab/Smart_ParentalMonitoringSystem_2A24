@@ -1,5 +1,5 @@
 
-"SmartParental: Empowering Parents with Comprehensive Monitoring and Scheduling"
+"SmartParental+: Empowering Parents with Comprehensive Monitoring and Scheduling"
 
 SmartParental is an advanced desktop application that goes beyond traditional parental control solutions. With its integration of the Smart Parental Monitoring System, access card systems, motion detectors, and gas detectors, SmartParental+ offers an all-encompassing solution for parental monitoring and home security.
 
